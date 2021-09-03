@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:wallet_app/routes/Onboard/onboard_Screen.dart';
 import 'package:wallet_app/routes/Sig%20In/Firebase_Account/createAcc_firebase.dart';
 import 'package:wallet_app/routes/Sig%20In/SigIn_Screen.dart';
-import 'package:wallet_app/widgets/onboard_widgets.dart';
 
 class CreateAccount extends StatefulWidget {
   const CreateAccount({Key? key}) : super(key: key);
@@ -40,9 +39,7 @@ class _CreateAccountState extends State<CreateAccount> {
           ? SafeArea(
               child: Column(
                 children: [
-                  SizedBox(
-                    height: 40,
-                  ),
+                  SizedBox(height: 40,),
                   !isKeyBoard
                       ? Image.asset('assets/images/office.png')
                       : Container(),
@@ -99,15 +96,19 @@ class _CreateAccountState extends State<CreateAccount> {
                                 ),
                                 backgroundColor: Color(0xff347AF0)),
                             onPressed: () {
+
                               if (_firstName.text.isNotEmpty &&
                                   _email.text.isNotEmpty &&
                                   _passWord.text.isNotEmpty) {
+
                                 setState(() {
                                   isloading = true;
                                 });
+
                                 createAccount(_firstName.text, _lastName.text,
                                         _email.text, _passWord.text)
                                     .then((user) {
+
                                   if (user != null) {
                                     setState(() {
                                       isloading = false;
