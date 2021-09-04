@@ -1,5 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:wallet_app/routes/Onboard/onboard_Screen.dart';
 import 'package:wallet_app/routes/Sig%20In/Firebase_Account/createAcc_firebase.dart';
 import 'package:wallet_app/routes/Sig%20In/LogIN/SigIn_Screen.dart';
 import 'package:wallet_app/widgets/build_email.dart';
@@ -89,7 +89,7 @@ class _CreateAccountState extends State<CreateAccount> {
                                   borderRadius: BorderRadius.circular(23),
                                 ),
                                 backgroundColor: Color(0xff347AF0)),
-                            onPressed: () {
+                            onPressed: () async {
                               if (_firstName.text.isNotEmpty &&
                                   _email.text.isNotEmpty &&
                                   _passWord.text.isNotEmpty) {
@@ -98,7 +98,7 @@ class _CreateAccountState extends State<CreateAccount> {
                                 });
 
                                 createAccount(_firstName.text, _lastName.text,
-                                        _email.text, _passWord.text)
+                                        _email.text.trim(), _passWord.text)
                                     .then((user) {
                                   if (user != null) {
                                     setState(() {

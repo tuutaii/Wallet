@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:wallet_app/routes/Sig%20In/Firebase_Account/createAcc_firebase.dart';
+import 'package:wallet_app/routes/Sig%20In/LogIN/SigIn_Screen.dart';
 import 'package:wallet_app/routes/Sig%20In/SigUp/CreateAccount_Screen.dart';
 import 'package:wallet_app/routes/Wallet/wallet_ICX.dart';
 
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget{
         fontFamily: 'f1'
 
       ),
-      home: CreateAccount()
+      home: SingIn()
     );
   }
 

@@ -14,8 +14,6 @@ Future<User?> createAccount(String firstname, String lastname, String email, Str
 
     print("Account created Succesfull");
 
-    userCrendetial.user!.updateDisplayName(lastname);
-
     await _firestore.collection('users').doc(_auth.currentUser!.uid).set({
       "last_name": lastname,
       "first_name": firstname,
@@ -44,7 +42,7 @@ Future<User?> logIn(String email, String password) async {
         .collection('users')
         .doc(_auth.currentUser!.uid)
         .get()
-        .then((value) => userCredential.user!.updateDisplayName(value['name']));
+        .then((value) => userCredential.user!.updateDisplayName(value['last_name']));
 
     return userCredential.user;
   } catch (e) {

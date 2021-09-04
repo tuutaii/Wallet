@@ -18,6 +18,7 @@ class _WalletthomeState extends State<Walletthome> {
   double _balance = 0;
   String _firstName = '', _lastName = '', _primaryKey = '', _address = '';
   bool _isBalance = false;
+  
 
   final TextEditingController _icxController = TextEditingController();
   final TextEditingController _addressController = TextEditingController();
@@ -37,7 +38,7 @@ class _WalletthomeState extends State<Walletthome> {
           if (documentSnapshot.exists && _primaryKey == '') {
             setState(() {
               print(documentSnapshot.data());
-              _primaryKey = documentSnapshot.get('primary_key');
+              // _primaryKey = documentSnapshot.get('primary_key');
               _address = documentSnapshot.get('address');
               _firstName = documentSnapshot.get('first_name');
               _lastName = documentSnapshot.get('last_name');
@@ -47,17 +48,18 @@ class _WalletthomeState extends State<Walletthome> {
       );
     }
   }
+  
 
-  void loadBalance() async {
-    if (_primaryKey != '') {
-      final balance = await FlutterIconNetwork.instance!
-          .getIcxBalance(privateKey: _primaryKey);
-      if (_balance != balance.icxBalance)
-        setState(() {
-          _balance = balance.icxBalance;
-        });
-    }
-  }
+  // void loadBalance() async {
+  //   if (_primaryKey != '') {
+  //     final balance = await FlutterIconNetwork.instance!
+  //         .getIcxBalance(privateKey: _primaryKey);
+  //     if (_balance != balance.icxBalance)
+  //       setState(() {
+  //         _balance = balance.icxBalance;
+  //       });
+  //   }
+  // }
 
   void showHideBalance() {
     setState(() {
@@ -67,6 +69,8 @@ class _WalletthomeState extends State<Walletthome> {
 
   @override
   Widget build(BuildContext context) {
+    loadID();
+    loadData();
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: Color(0xffedf1f9),
