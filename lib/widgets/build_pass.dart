@@ -1,37 +1,45 @@
 import 'package:flutter/material.dart';
 
-class Buildpass extends StatefulWidget {
-  const Buildpass({Key? key}) : super(key: key);
+class PasswordFieldWidget extends StatefulWidget {
+  final String pass;
+  final TextEditingController controller;
+  const PasswordFieldWidget(
+      {Key? key, required this.pass, required this.controller})
+      : super(key: key);
 
   @override
-  _BuildpassState createState() => _BuildpassState();
+  State<PasswordFieldWidget> createState() => _PasswordFieldWidgetState();
 }
 
-class _BuildpassState extends State<Buildpass> {
+class _PasswordFieldWidgetState extends State<PasswordFieldWidget> {
   bool _isObscure = true;
-  String password = '';
+
   @override
   Widget build(BuildContext context) {
     return TextField(
-      onChanged: (value) => setState(() => this.password = value),
-      onSubmitted: (value) => setState(() => this.password = value),
-      obscureText: _isObscure,
-      decoration: InputDecoration(
-          border: UnderlineInputBorder(),
-          labelText: 'Password',
-          labelStyle: TextStyle(
-              fontSize: 15,
-              fontWeight: FontWeight.w600,
-              color: Color(0xffB5BBC9)),
+        obscureText: _isObscure,
+        controller: widget.controller,
+        style: const TextStyle(fontSize: 19, color: Color(0xFF0D1F3C)),
+        decoration: InputDecoration(
+          labelText: widget.pass,
+          labelStyle: const TextStyle(
+            fontSize: 19,
+            fontWeight: FontWeight.w400,
+            color: Color(0xFF3D4C63),
+          ),
           suffixIcon: IconButton(
             icon: Icon(
-                _isObscure == false ? Icons.visibility_off : Icons.visibility),
+              _isObscure == false
+                  ? Icons.visibility_off_outlined
+                  : Icons.visibility_outlined,
+              color: const Color(0xFFB5BBC9),
+            ),
             onPressed: () {
               setState(() {
                 _isObscure = !_isObscure;
               });
             },
-          )),
-    );
+          ),
+        ));
   }
 }

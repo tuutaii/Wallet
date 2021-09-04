@@ -1,36 +1,39 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:wallet_app/routes/Onboard/onboard_Screen.dart';
 import 'package:wallet_app/routes/Sig%20In/Firebase_Account/createAcc_firebase.dart';
-import 'package:wallet_app/routes/Sig%20In/SigIn_Screen.dart';
+import 'package:wallet_app/routes/Sig%20In/SigUp/CreateAccount_Screen.dart';
+import 'package:wallet_app/routes/Wallet/wallet_ICX.dart';
+import 'package:wallet_app/widgets/build_email.dart';
+import 'package:wallet_app/widgets/build_pass.dart';
+import '../PassWord/Forgotpass_Screen.dart';
 
-class CreateAccount extends StatefulWidget {
-  const CreateAccount({Key? key}) : super(key: key);
-
+class SingIn extends StatefulWidget {
   @override
-  _CreateAccountState createState() => _CreateAccountState();
+  _SingInState createState() => _SingInState();
 }
 
-class _CreateAccountState extends State<CreateAccount> {
-  final TextEditingController _firstName = TextEditingController();
-  final TextEditingController _lastName = TextEditingController();
+class _SingInState extends State<SingIn> {
+  bool isloading = false;
+
   final TextEditingController _email = TextEditingController();
   final TextEditingController _passWord = TextEditingController();
-  bool _isObscure = true;
-  bool isloading = false;
 
   @override
   Widget build(BuildContext context) {
     bool isKeyBoard = MediaQuery.of(context).viewInsets.bottom != 0;
-    final size = MediaQuery.of(context).size;
+
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: Color(0xffedf1f9),
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         elevation: 0,
         title: Text(
-          "Create Account!",
+          "Welcome Back!",
           style: TextStyle(
-              fontSize: 26, color: Colors.black, fontWeight: FontWeight.w600),
+              fontSize: 26,
+              color: Color(0xff0d1f3c),
+              fontWeight: FontWeight.w600),
         ),
         centerTitle: true,
         backgroundColor: Color(0xffedf1f9),
@@ -39,9 +42,11 @@ class _CreateAccountState extends State<CreateAccount> {
           ? SafeArea(
               child: Column(
                 children: [
-                  SizedBox(height: 40,),
+                  SizedBox(
+                    height: 40,
+                  ),
                   !isKeyBoard
-                      ? Image.asset('assets/images/office.png')
+                      ? Image.asset('assets/images/login.png')
                       : Container(),
                   Expanded(
                     child: Container(
@@ -53,41 +58,30 @@ class _CreateAccountState extends State<CreateAccount> {
                               topRight: Radius.circular(20))),
                       child: Column(
                         children: [
-                          field(size, 'First Name', "First Name", _firstName),
-                          field(size, 'Last Name', "Last Name", _lastName),
-                          field(size, 'Email', "Email", _email),
-                          TextField(
-                            controller: _passWord,
-                            obscureText: _isObscure,
-                            decoration: InputDecoration(
-                                border: UnderlineInputBorder(),
-                                labelText: 'Password',
-                                labelStyle: TextStyle(
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w600,
-                                    color: Color(0xffB5BBC9)),
-                                suffixIcon: IconButton(
-                                  icon: Icon(
-                                    _isObscure == false
-                                        ? Icons.visibility_off_outlined
-                                        : Icons.visibility_outlined,
-                                    color: Color(0xFFB5BBC9),
-                                  ),
-                                  onPressed: () {
-                                    setState(() {
-                                      _isObscure = !_isObscure;
-                                    });
-                                  },
-                                )),
+                          TextFieldWidget(text: 'Email', controller: _email),
+                          PasswordFieldWidget(
+                              pass: 'Password', controller: _passWord),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => Forgot()));
+                                },
+                                child: Text(
+                                  'Forgot your password?',
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w600,
+                                      color: Color(0xff347AF0)),
+                                ),
+                              )
+                            ],
                           ),
-                          !isKeyBoard
-                              ? SizedBox(
-                                  height: 19,
-                                )
-                              : Container(),
-                          SizedBox(
-                            height: 13,
-                          ),
+                          SizedBox(height: 90),
                           TextButton(
                             style: TextButton.styleFrom(
                                 fixedSize: Size(200, 46),
@@ -96,41 +90,53 @@ class _CreateAccountState extends State<CreateAccount> {
                                 ),
                                 backgroundColor: Color(0xff347AF0)),
                             onPressed: () {
-
-                              if (_firstName.text.isNotEmpty &&
-                                  _email.text.isNotEmpty &&
+                              setState(() {
+                                isloading = true;
+                              });
+                              if (_email.text.isNotEmpty &&
                                   _passWord.text.isNotEmpty) {
-
                                 setState(() {
                                   isloading = true;
                                 });
 
-                                createAccount(_firstName.text, _lastName.text,
-                                        _email.text, _passWord.text)
-                                    .then((user) {
-
+                                logIn(_email.text, _passWord.text).then((user) {
                                   if (user != null) {
+                                    print("Login Sucessfull");
                                     setState(() {
                                       isloading = false;
                                     });
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (_) => Onboard()));
-                                    print("Account Created Sucessfull");
+                                            builder: (_) => Walletthome()));
                                   } else {
-                                    print("Login Failed");
+                                    showDialog(
+                                        context: context,
+                                        builder: (BuildContext context) {
+                                          return AlertDialog(
+                                            title: Text('User not found'),
+                                          );
+                                        });
                                     setState(() {
                                       isloading = false;
                                     });
                                   }
                                 });
                               } else {
-                                print("Please enter Fields");
+                                showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      return AlertDialog(
+                                        title: Text('Please enter all Fields'),
+                                      );
+                                    });
+                                setState(() {
+                                  isloading = false;
+                                });
                               }
                             },
                             child: const Text(
-                              "Let’s Get Started",
+                              'Login',
                               style:
                                   TextStyle(color: Colors.white, fontSize: 19),
                             ),
@@ -138,7 +144,7 @@ class _CreateAccountState extends State<CreateAccount> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Text("Already have an account?",
+                              Text("Dont't have an account?",
                                   style: TextStyle(
                                       fontSize: 15,
                                       fontWeight: FontWeight.w400,
@@ -148,10 +154,11 @@ class _CreateAccountState extends State<CreateAccount> {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => SingIn()));
+                                          builder: (context) =>
+                                              CreateAccount()));
                                 },
                                 child: Text(
-                                  'Login',
+                                  'Sign Up',
                                   style: TextStyle(
                                       fontSize: 15,
                                       fontWeight: FontWeight.w600,
@@ -169,30 +176,13 @@ class _CreateAccountState extends State<CreateAccount> {
             )
           : Center(
               child: Container(
-                height: size.height / 20,
-                width: size.height / 20,
-                child: CircularProgressIndicator(),
+                height: 20,
+                width: 20,
+                child: CircularProgressIndicator(
+                  color: Colors.blue,
+                ),
               ),
             ),
-    );
-  }
-
-  Widget field(Size size, String hintText, String lableText,
-      TextEditingController cont) {
-    return Container(
-      height: size.height / 15,
-      width: size.width,
-      child: TextField(
-        controller: cont,
-        decoration: InputDecoration(
-          border: UnderlineInputBorder(),
-          labelText: lableText,
-          labelStyle: TextStyle(
-              fontSize: 15,
-              fontWeight: FontWeight.w600,
-              color: Color(0xffB5BBC9)),
-        ),
-      ),
     );
   }
 }

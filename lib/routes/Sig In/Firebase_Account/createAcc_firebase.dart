@@ -3,8 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:wallet_app/routes/Onboard/onboard_Screen.dart';
 
-Future<User?> createAccount(
-    String firstname, String lastname, String email, String password) async {
+Future<User?> createAccount(String firstname, String lastname, String email, String password) async {
   FirebaseAuth _auth = FirebaseAuth.instance;
 
   FirebaseFirestore _firestore = FirebaseFirestore.instance;
@@ -18,7 +17,8 @@ Future<User?> createAccount(
     userCrendetial.user!.updateDisplayName(lastname);
 
     await _firestore.collection('users').doc(_auth.currentUser!.uid).set({
-      "name": lastname,
+      "last_name": lastname,
+      "first_name": firstname,
       "email": email,
       "status": "Unavalible",
       "uid": _auth.currentUser!.uid,

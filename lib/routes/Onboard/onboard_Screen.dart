@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:wallet_app/routes/Sig%20In/Welcome_Screen.dart';
+import 'package:wallet_app/routes/Sig%20In/Welcom/Welcome_Screen.dart';
 import 'package:wallet_app/widgets/onboard_widgets.dart';
 
 class Onboard extends StatefulWidget {
@@ -26,6 +26,7 @@ class _OnboardState extends State<Onboard> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         elevation: 0,
         backgroundColor: Color(0xffedf1f9),
         actions: [
