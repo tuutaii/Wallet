@@ -1,7 +1,7 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:wallet_app/routes/Sig%20In/Firebase_Account/createAcc_firebase.dart';
 import 'package:wallet_app/routes/Sig%20In/LogIN/SigIn_Screen.dart';
+import 'package:wallet_app/routes/Sig%20In/PINCreate/createPIN_Screen.dart';
 import 'package:wallet_app/widgets/build_email.dart';
 import 'package:wallet_app/widgets/build_pass.dart';
 
@@ -107,7 +107,7 @@ class _CreateAccountState extends State<CreateAccount> {
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (_) => SingIn()));
+                                            builder: (_) => CreatePIN()));
                                     print("Account Created Sucessfull");
                                   } else {
                                     print("Login Failed");

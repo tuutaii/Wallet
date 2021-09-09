@@ -5,11 +5,13 @@ class Userinfo extends StatelessWidget {
   final String firstName, lastName;
   final double balance;
   final Function buttonShowHide;
+  final String email;
 
   const Userinfo({
     Key? key,
     required this.firstName,
     required this.lastName,
+    required this.email,
     this.balance = .0,
     required this.isBalance,
     required this.buttonShowHide,
@@ -44,18 +46,13 @@ class Userinfo extends StatelessWidget {
                   height: 50,
                   width: 50,
                   decoration: BoxDecoration(
-                      color: Colors.blue,
+                      color: Colors.white,
                       shape: BoxShape.circle,
                       border: Border.all(
                         color: Color(0xffDBDDEF),
                         width: 1,
                       )),
-                  child: Center(
-                    child: IconButton(
-                      onPressed: () {},
-                      icon: Icon(Icons.person),
-                    ),
-                  ),
+                  child: Image.asset("assets/images/bts.png")
                 ),
                 SizedBox(
                   width: 20,
@@ -64,14 +61,14 @@ class Userinfo extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Hi, User $firstName $lastName',
+                      'Hi, $firstName $lastName',
                       style: TextStyle(
                         fontSize: 20,
                         color: Colors.black,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    Text('tutai@gmail.com')
+                    Text('$email')
                   ],
                 )
               ],
@@ -82,13 +79,13 @@ class Userinfo extends StatelessWidget {
             right: 0,
             left: 0,
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30),
+              padding: const EdgeInsets.symmetric(horizontal: 50),
               child: Container(
                 height: 100,
                 width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
                   color: Color(0xff6495ED),
-                  borderRadius: BorderRadius.circular(5),
+                  borderRadius: BorderRadius.circular(20),
                 ),
                 child: Padding(
                   padding: const EdgeInsets.all(20),
@@ -114,11 +111,6 @@ class Userinfo extends StatelessWidget {
                                 : Text("SHOW",
                                     style: TextStyle(color: Colors.white)),
                           ),
-                          //           IconButton(
-                          //             onPressed: buttonShowHide(),
-                          //             icon: isBalance ? Icon(Icons.visibility_off_outlined)
-                          //     : Icon(Icons.visibility_outlined,),
-                          // color: const Color(0xFFB5BBC9),)
                         ],
                       ),
                       Text(

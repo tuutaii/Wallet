@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:wallet_app/routes/Sig%20In/Firebase_Account/createAcc_firebase.dart';
-import 'package:wallet_app/routes/Sig%20In/LogIN/SigIn_Screen.dart';
-import 'package:wallet_app/routes/Sig%20In/SigUp/CreateAccount_Screen.dart';
-import 'package:wallet_app/routes/Wallet/wallet_ICX.dart';
+import 'package:flutter_icon_network/flutter_icon_network.dart';
+import 'package:wallet_app/routes/Sig%20In/Register/CreateAccount_Screen.dart';
+
 
 
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Firebase.initializeApp();
+  await FlutterIconNetwork.instance!
+      .init(host: "https://bicon.net.solidwallet.io/api/v3", isTestNet: true);
   runApp(MyApp());
 }
 
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget{
         fontFamily: 'f1'
 
       ),
-      home: SingIn()
+      home: CreateAccount()
     );
   }
 

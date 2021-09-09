@@ -1,10 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:wallet_app/routes/Sig%20In/EnterPIN/enter_pin.dart';
 import 'package:wallet_app/routes/Sig%20In/Firebase_Account/createAcc_firebase.dart';
-import 'package:wallet_app/routes/Sig%20In/SigUp/CreateAccount_Screen.dart';
+import 'package:wallet_app/routes/Sig%20In/Register/CreateAccount_Screen.dart';
 import 'package:wallet_app/routes/Wallet/wallet_ICX.dart';
 import 'package:wallet_app/widgets/build_email.dart';
 import 'package:wallet_app/widgets/build_pass.dart';
+import 'package:wallet_app/widgets/content.dart';
 import '../PassWord/Forgotpass_Screen.dart';
 
 class SingIn extends StatefulWidget {
@@ -108,7 +110,7 @@ class _SingInState extends State<SingIn> {
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (_) => Walletthome()));
+                                            builder: (context) => EnterPIN()));
                                   } else {
                                     showDialog(
                                         context: context,

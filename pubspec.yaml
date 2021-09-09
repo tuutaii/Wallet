@@ -32,6 +32,8 @@ dependencies:
   cloud_firestore: ^2.5.1
   flutter_svg: ^0.22.0
   flutter_icon_network: ^1.0.0
+  intl: ^0.17.0
+  crypt: ^4.0.1
 
 dev_dependencies:
   flutter_test:

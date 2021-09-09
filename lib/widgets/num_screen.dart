@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 
-
 class NumberKeyBoard extends StatelessWidget {
-  const NumberKeyBoard({Key? key}) : super(key: key);
-
+  const NumberKeyBoard(
+      {Key? key, required this.pressAddString, required this.removeString})
+      : super(key: key);
+  final Function pressAddString, removeString;
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height / 2,
+      //height: MediaQuery.of(context).size.height / 2,
       width: MediaQuery.of(context).size.width,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -17,22 +18,23 @@ class NumberKeyBoard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 for (int j = 1; j <= 3; j++)
-                  Number(number: (j + i * 3).toString(), press: 0)
+                  Number(number: (j + i * 3).toString(), press: pressAddString)
               ],
             ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Number(number: '.', press: 0),
-              Number(number: '0', press: 0),
+              Number(number: '.', press: pressAddString),
+              Number(number: '0', press: pressAddString),
               Container(
                 width: 80,
                 height: 80,
                 child: IconButton(
-                  icon: Icon(Icons.backspace),
-                  color: Colors.black,
-                  onPressed: () {},
-                ),
+                    onPressed: () {
+                      removeString();
+                    },
+                    icon: Icon(Icons.backspace),
+                    color: Colors.black),
               )
             ],
           )
@@ -44,14 +46,17 @@ class NumberKeyBoard extends StatelessWidget {
 
 class Number extends StatelessWidget {
   final String number;
-  final press;
-  const Number({Key? key, required this.number, this.press}) : super(key: key);
+  final Function press;
+  const Number({Key? key, required this.number, required this.press})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       splashColor: Colors.transparent,
-      onTap: () {},
+      onTap: () {
+        press(number);
+      },
       child: Container(
         height: 80,
         width: 80,

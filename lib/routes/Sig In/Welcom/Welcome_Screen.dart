@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wallet_app/routes/Sig%20In/LogIN/SigIn_Screen.dart';
-import 'package:wallet_app/routes/Sig%20In/SigUp/CreateAccount_Screen.dart';
+import 'package:wallet_app/routes/Sig%20In/Register/CreateAccount_Screen.dart';
+
 
 
 class Welcome extends StatelessWidget {

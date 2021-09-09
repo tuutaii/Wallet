@@ -89,10 +89,12 @@ class _OnboardState extends State<Onboard> {
             left: (MediaQuery.of(context).size.width - 200) / 2,
             child: InkWell(
               onTap: () {
-                (currentPage != 3) ?
-                _pageController.nextPage(
-                    duration: Duration(milliseconds: 400),
-                    curve: Curves.easeInOut) : Navigator.push(context, MaterialPageRoute(builder: (context)=>Welcome()));
+                (currentPage != 3)
+                    ? _pageController.nextPage(
+                        duration: Duration(milliseconds: 400),
+                        curve: Curves.easeInOut)
+                    : Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Welcome()));
               },
               child: Container(
                 height: 46,
