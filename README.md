@@ -44,13 +44,13 @@
         </li>
     </ul>
     <h3> Photos </h3>
-    <h4> Database </h4>
-    <hr>
-    <img src="https://raw.githubusercontent.com/tuutaii/Wallet/main/P1.png" alt="">
     <h4> WalkThrought Screen </h4>
     <hr>
+    <img src="https://raw.githubusercontent.com/tuutaii/Wallet/main/P1.png" alt="">
+    <h4> Login - SignUp - Forget PassWord </h4>
+    <hr>
     <img src="https://raw.githubusercontent.com/tuutaii/Wallet/main/P2.png" alt="">
-    <h4> Login - SignUp - Forget PassWord</h4>
+    <h4> Home Wallet - Dialog Transaction </h4>
     <hr>
     <img src="https://raw.githubusercontent.com/tuutaii/Wallet/main/P3.png" alt="">
     <hr>
