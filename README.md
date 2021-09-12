@@ -31,7 +31,7 @@
             Firebase Auth
         </li>
         <li>
-            Flutter Sliable
+            Crypt
         </li>
         <li>
             Cloud Firestore
@@ -39,9 +39,12 @@
         <li>
             Intl
         </li>
-        <li>
-            Percent Indicator
+         <li>
+            Flutter Icon Network: 
         </li>
+        <li>
+            Link get ICX : https://faucet.sharpn.tech/
+        </li> 
     </ul>
     <h3> Photos </h3>
     <h4> WalkThrought Screen </h4>
