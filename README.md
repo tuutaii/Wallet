@@ -22,6 +22,20 @@
             Dialog Transaction
         </li>
     </ul>
+    <h3>
+        My account test:
+    </h3>
+    <ul>
+        <li>
+                Email: tutai@gmail.com
+        </li>
+        <li>
+                PassWord: 123456
+        </li>
+        <li>
+                PIN: 1111
+        </li>
+    </ul>
      <h3>
         Package I Use:
     </h3>
