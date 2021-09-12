@@ -46,14 +46,13 @@
     <h3> Photos </h3>
     <h4> Database </h4>
     <hr>
-    <img src="https://raw.githubusercontent.com/tuutaii/todo_list_app/main/P1.png" alt="">
-    <img src="https://raw.githubusercontent.com/tuutaii/todo_list_app/main/P2.png" alt="">
+    <img src="https://raw.githubusercontent.com/tuutaii/Wallet/main/P1.png" alt="">
     <h4> WalkThrought Screen </h4>
     <hr>
-    <img src="https://raw.githubusercontent.com/tuutaii/todo_list_app/main/P3.png" alt="">
+    <img src="https://raw.githubusercontent.com/tuutaii/Wallet/main/P2.png" alt="">
     <h4> Login - SignUp - Forget PassWord</h4>
     <hr>
-    <img src="https://raw.githubusercontent.com/tuutaii/todo_list_app/main/P4.png" alt="">
+    <img src="https://raw.githubusercontent.com/tuutaii/Wallet/main/P3.png" alt="">
     <h4> Work List Screen </h4>
     <hr>
    
