@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_icon_network/flutter_icon_network.dart';
+import 'package:wallet_app/routes/Onboard/onboard_Screen.dart';
 import 'package:wallet_app/routes/Sig%20In/Register/CreateAccount_Screen.dart';
 
 
@@ -22,9 +23,8 @@ class MyApp extends StatelessWidget{
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         fontFamily: 'f1'
-
       ),
-      home: CreateAccount()
+      home: Onboard()
     );
   }
 
