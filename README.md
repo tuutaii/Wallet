@@ -22,6 +22,20 @@
             Dialog Transaction
         </li>
     </ul>
+    <h3>
+        My account test:
+    </h3>
+    <ul>
+        <li>
+                Email: tutai@gmail.com
+        </li>
+        <li>
+                PassWord: 123456
+        </li>
+        <li>
+                PIN: 1111
+        </li>
+    </ul>
      <h3>
         Package I Use:
     </h3>
@@ -31,7 +45,7 @@
             Firebase Auth
         </li>
         <li>
-            Flutter Sliable
+            Crypt
         </li>
         <li>
             Cloud Firestore
@@ -39,18 +53,21 @@
         <li>
             Intl
         </li>
-        <li>
-            Percent Indicator
+         <li>
+            Flutter Icon Network: 
         </li>
+        <li>
+            Link get ICX : https://faucet.sharpn.tech/
+        </li> 
     </ul>
     <h3> Photos </h3>
-    <h4> Database </h4>
-    <hr>
-    <img src="https://raw.githubusercontent.com/tuutaii/Wallet/main/P1.png" alt="">
     <h4> WalkThrought Screen </h4>
     <hr>
+    <img src="https://raw.githubusercontent.com/tuutaii/Wallet/main/P1.png" alt="">
+    <h4> Login - SignUp - Forget PassWord </h4>
+    <hr>
     <img src="https://raw.githubusercontent.com/tuutaii/Wallet/main/P2.png" alt="">
-    <h4> Login - SignUp - Forget PassWord</h4>
+    <h4> Home Wallet - Dialog Transaction </h4>
     <hr>
     <img src="https://raw.githubusercontent.com/tuutaii/Wallet/main/P3.png" alt="">
     <hr>
